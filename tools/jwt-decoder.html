@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JWT Decoder — SimpleDevUtils</title>
+  <meta name="description" content="Free online JWT decoder. Paste a JSON Web Token to inspect its header, payload, and expiry. No secret key required. Runs entirely in your browser." />
+  <meta name="keywords" content="JWT decoder, JSON Web Token decoder, JWT inspector, JWT header payload, online JWT tool" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="/#tools">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <a href="/" class="back-btn">&larr; All Tools</a>
+      <header class="tool-header">
+        <h1>JWT Decoder</h1>
+        <p>Inspect a JWT's header, payload, and expiry — no secret key needed.</p>
+      </header>
+
+      <div class="tool-interface">
+        <div class="tool-label" style="margin-bottom: 8px;">JWT Token</div>
+        <textarea class="tool-textarea" id="jwt-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." style="min-height: 100px; font-size: 0.78rem;"></textarea>
+        <div class="tool-actions" style="margin-top: 12px;">
+          <button class="btn btn--primary btn--sm" id="btn-decode">Decode</button>
+          <button class="btn btn--ghost btn--sm" id="btn-clear">Clear</button>
+          <button class="btn btn--secondary btn--sm" id="btn-copy-payload">Copy Payload</button>
+        </div>
+
+        <div class="tool-msg" id="jwt-msg"></div>
+        <div class="jwt-expiry" id="jwt-expiry"></div>
+
+        <div class="jwt-panels">
+          <div class="jwt-panel">
+            <h3>Header</h3>
+            <pre id="jwt-header"></pre>
+          </div>
+          <div class="jwt-panel">
+            <h3>Payload</h3>
+            <pre id="jwt-payload"></pre>
+          </div>
+        </div>
+
+        <div class="jwt-panel" style="margin-top: 16px;">
+          <h3>Signature (base64url)</h3>
+          <pre id="jwt-sig" style="word-break: break-all; font-size: 0.75rem; color: var(--text-dim);"></pre>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="tool-seo">
+    <div class="container">
+      <h2>About JWT Decoding</h2>
+      <p>
+        JSON Web Tokens (JWTs) consist of three base64url-encoded parts: a header, a payload,
+        and a signature. This tool decodes the header and payload so you can inspect claims like
+        <code>sub</code>, <code>exp</code>, <code>iat</code>, and <code>iss</code> without
+        needing the signing secret.
+      </p>
+      <p>
+        Note: this tool only <strong>decodes</strong> — it does not verify the signature.
+        Never trust JWT claims without server-side signature verification.
+        Your token never leaves your browser.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <div class="container">
+      <h2 class="section-title">Related Tools</h2>
+      <div class="related-tools__grid">
+        <a href="base64-encode-decode.html" class="tool-card">
+          <div class="tool-card__icon">b64</div>
+          <h3>Base64 Encoder / Decoder</h3>
+        </a>
+        <a href="hash-generator.html" class="tool-card">
+          <div class="tool-card__icon">#sha</div>
+          <h3>Hash Generator</h3>
+        </a>
+        <a href="url-encoder.html" class="tool-card">
+          <div class="tool-card__icon">URL</div>
+          <h3>URL Encoder / Decoder</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils. Privacy-first developer tools.</span>
+        <div class="footer__links">
+          <a href="/">Home</a>
+          <a href="/#tools">All Tools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/jwt.js"></script>
+</body>
+</html>

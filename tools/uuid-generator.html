@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UUID Generator — v4 — SimpleDevUtils</title>
+  <meta name="description" content="Free online UUID v4 generator. Generate one or hundreds of cryptographically random UUIDs instantly in your browser using the Web Crypto API." />
+  <meta name="keywords" content="UUID generator, UUID v4, GUID generator, random UUID, online UUID tool" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="/#tools">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <a href="/" class="back-btn">&larr; All Tools</a>
+      <header class="tool-header">
+        <h1>UUID Generator</h1>
+        <p>Generate cryptographically random v4 UUIDs using <code>crypto.randomUUID()</code>.</p>
+      </header>
+
+      <div class="tool-interface">
+        <div class="tool-row">
+          <label class="tool-label" for="uuid-count" style="white-space: nowrap;">Count (1–100)</label>
+          <input class="tool-input-sm" type="number" id="uuid-count" min="1" max="100" value="1" />
+          <button class="btn btn--primary btn--sm" id="btn-generate">Generate</button>
+          <button class="btn btn--secondary btn--sm" id="btn-copy-all">Copy All</button>
+          <button class="btn btn--ghost btn--sm" id="btn-clear">Clear</button>
+        </div>
+
+        <div class="tool-msg" id="uuid-msg"></div>
+
+        <div class="uuid-list" id="uuid-list"></div>
+        <p style="font-size: 0.8rem; color: var(--text-dim); margin-top: 8px;">Click any UUID to copy it.</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="tool-seo">
+    <div class="container">
+      <h2>About UUID v4</h2>
+      <p>
+        UUID (Universally Unique Identifier) v4 uses random or pseudo-random numbers to
+        guarantee uniqueness without coordination between systems. The format is
+        <code>xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx</code> where <code>y</code> is one of
+        8, 9, a, or b.
+      </p>
+      <p>
+        This tool uses <code>crypto.randomUUID()</code>, a browser built-in that generates
+        cryptographically strong random UUIDs. No network requests are made.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <div class="container">
+      <h2 class="section-title">Related Tools</h2>
+      <div class="related-tools__grid">
+        <a href="hash-generator.html" class="tool-card">
+          <div class="tool-card__icon">#sha</div>
+          <h3>Hash Generator</h3>
+        </a>
+        <a href="timestamp-converter.html" class="tool-card">
+          <div class="tool-card__icon">time</div>
+          <h3>Timestamp Converter</h3>
+        </a>
+        <a href="base64-encode-decode.html" class="tool-card">
+          <div class="tool-card__icon">b64</div>
+          <h3>Base64 Encoder / Decoder</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils. Privacy-first developer tools.</span>
+        <div class="footer__links">
+          <a href="/">Home</a>
+          <a href="/#tools">All Tools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/uuid.js"></script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hash Generator — SHA-256, SHA-512 — SimpleDevUtils</title>
+  <meta name="description" content="Free online hash generator. Compute SHA-1, SHA-256, SHA-384, and SHA-512 hashes from any text using the browser's built-in Web Crypto API. No data sent to servers." />
+  <meta name="keywords" content="hash generator, SHA-256, SHA-512, SHA-1, SHA-384, online hash tool, Web Crypto API" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="/#tools">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <a href="/" class="back-btn">&larr; All Tools</a>
+      <header class="tool-header">
+        <h1>Hash Generator</h1>
+        <p>Generate SHA hashes using the browser's Web Crypto API — no server calls.</p>
+      </header>
+
+      <div class="tool-interface">
+        <div class="tool-label" style="margin-bottom: 8px;">Input Text</div>
+        <textarea class="tool-textarea" id="hash-input" placeholder="Enter text to hash..." style="min-height: 120px;"></textarea>
+
+        <div class="tool-actions" style="margin-top: 12px;">
+          <button class="btn btn--primary btn--sm" id="btn-hash">Generate Hashes</button>
+          <button class="btn btn--ghost btn--sm" id="btn-clear">Clear</button>
+        </div>
+
+        <div class="tool-msg" id="hash-msg"></div>
+
+        <div class="hash-results">
+
+          <div class="hash-result-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label>SHA-1</label>
+              <button class="btn btn--ghost btn--sm" id="copy-sha1">Copy</button>
+            </div>
+            <div class="tool-output" id="hash-sha1"></div>
+          </div>
+
+          <div class="hash-result-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label>SHA-256</label>
+              <button class="btn btn--ghost btn--sm" id="copy-sha256">Copy</button>
+            </div>
+            <div class="tool-output" id="hash-sha256"></div>
+          </div>
+
+          <div class="hash-result-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label>SHA-384</label>
+              <button class="btn btn--ghost btn--sm" id="copy-sha384">Copy</button>
+            </div>
+            <div class="tool-output" id="hash-sha384"></div>
+          </div>
+
+          <div class="hash-result-row">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+              <label>SHA-512</label>
+              <button class="btn btn--ghost btn--sm" id="copy-sha512">Copy</button>
+            </div>
+            <div class="tool-output" id="hash-sha512"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="tool-seo">
+    <div class="container">
+      <h2>About SHA Hashing</h2>
+      <p>
+        SHA (Secure Hash Algorithm) is a family of cryptographic hash functions that produce
+        a fixed-size digest from arbitrary input. SHA-256 and SHA-512 are widely used for
+        data integrity verification, digital signatures, and password hashing.
+      </p>
+      <p>
+        This tool uses the browser's built-in <code>window.crypto.subtle.digest</code> API,
+        which is fast, secure, and requires no external libraries. MD5 is intentionally
+        excluded as it is cryptographically broken.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <div class="container">
+      <h2 class="section-title">Related Tools</h2>
+      <div class="related-tools__grid">
+        <a href="uuid-generator.html" class="tool-card">
+          <div class="tool-card__icon">uuid</div>
+          <h3>UUID Generator</h3>
+        </a>
+        <a href="base64-encode-decode.html" class="tool-card">
+          <div class="tool-card__icon">b64</div>
+          <h3>Base64 Encoder / Decoder</h3>
+        </a>
+        <a href="jwt-decoder.html" class="tool-card">
+          <div class="tool-card__icon">JWT</div>
+          <h3>JWT Decoder</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils. Privacy-first developer tools.</span>
+        <div class="footer__links">
+          <a href="/">Home</a>
+          <a href="/#tools">All Tools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/hash.js"></script>
+</body>
+</html>
