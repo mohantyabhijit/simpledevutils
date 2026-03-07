@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>URL Encoder / Decoder — SimpleDevUtils</title>
+  <meta name="description" content="Free online URL encoder and decoder. Percent-encode special characters in URLs and query strings, or decode percent-encoded strings back to plain text." />
+  <meta name="keywords" content="URL encoder, URL decoder, percent encoding, URI encode decode, online URL tool" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="/#tools">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <a href="/" class="back-btn">&larr; All Tools</a>
+      <header class="tool-header">
+        <h1>URL Encoder / Decoder</h1>
+        <p>Percent-encode URL components or decode encoded strings back to plain text.</p>
+      </header>
+
+      <div class="tool-interface">
+        <div class="tool-label" style="margin-bottom: 8px;">Input</div>
+        <textarea class="tool-textarea" id="url-input" placeholder="Enter a string to encode, or a percent-encoded string to decode..." style="min-height: 160px;"></textarea>
+        <div class="tool-actions" style="margin-top: 12px;">
+          <button class="btn btn--primary btn--sm" id="btn-encode">Encode</button>
+          <button class="btn btn--secondary btn--sm" id="btn-decode">Decode</button>
+          <button class="btn btn--ghost btn--sm" id="btn-clear">Clear</button>
+        </div>
+
+        <div style="margin-top: 24px;">
+          <div class="tool-col__header" style="margin-bottom: 8px;">
+            <span class="tool-label">Output</span>
+            <button class="btn btn--ghost btn--sm" id="btn-copy">Copy</button>
+          </div>
+          <textarea class="tool-textarea" id="url-output" readonly placeholder="Result will appear here..." style="min-height: 160px;"></textarea>
+        </div>
+
+        <div class="tool-msg" id="url-msg"></div>
+      </div>
+    </div>
+  </main>
+
+  <section class="tool-seo">
+    <div class="container">
+      <h2>About URL Encoding</h2>
+      <p>
+        URL encoding (percent encoding) converts characters that are not allowed in URLs into a
+        format that can be transmitted over the internet. Special characters like spaces, &amp;,
+        =, and ? are replaced with a <code>%</code> followed by their hexadecimal ASCII code.
+      </p>
+      <p>
+        This tool uses <code>encodeURIComponent</code> and <code>decodeURIComponent</code>,
+        which are appropriate for encoding individual query string parameters or path segments.
+        No data leaves your browser.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <div class="container">
+      <h2 class="section-title">Related Tools</h2>
+      <div class="related-tools__grid">
+        <a href="base64-encode-decode.html" class="tool-card">
+          <div class="tool-card__icon">b64</div>
+          <h3>Base64 Encoder / Decoder</h3>
+        </a>
+        <a href="regex-tester.html" class="tool-card">
+          <div class="tool-card__icon">.*</div>
+          <h3>Regex Tester</h3>
+        </a>
+        <a href="jwt-decoder.html" class="tool-card">
+          <div class="tool-card__icon">JWT</div>
+          <h3>JWT Decoder</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils. Privacy-first developer tools.</span>
+        <div class="footer__links">
+          <a href="/">Home</a>
+          <a href="/#tools">All Tools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/url-encoder.js"></script>
+</body>
+</html>

@@ -3,121 +3,147 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SimpleDevUtils — Coming Soon</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #0d0f14;
-      color: #e2e4ec;
-      font-family: 'Inter', sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-    }
-
-    .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 48px;
-      font-weight: 700;
-      font-size: 1.2rem;
-    }
-
-    .logo__icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      border-radius: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: #fff;
-    }
-
-    h1 {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-    }
-
-    .gradient-text {
-      background: linear-gradient(135deg, #6366f1, #8b5cf6, #06b6d4);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    p {
-      margin-top: 20px;
-      color: #6b7280;
-      font-size: 1.05rem;
-      max-width: 400px;
-    }
-
-    .waitlist-form {
-      margin-top: 40px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .waitlist-form input[type="email"] {
-      padding: 12px 16px;
-      border-radius: 8px;
-      border: 1px solid #2a2d3a;
-      background: #161820;
-      color: #e2e4ec;
-      font-size: 0.95rem;
-      width: 260px;
-      outline: none;
-    }
-
-    .waitlist-form input[type="email"]::placeholder { color: #4b5060; }
-    .waitlist-form input[type="email"]:focus { border-color: #6366f1; }
-
-    .waitlist-form button {
-      padding: 12px 20px;
-      border-radius: 8px;
-      border: none;
-      background: linear-gradient(135deg, #6366f1, #8b5cf6);
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    .waitlist-form button:disabled { opacity: 0.6; cursor: default; }
-
-    .form-note {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: #4b5060;
-    }
-  </style>
+  <title>SimpleDevUtils — Free Online Developer Tools</title>
+  <meta name="description" content="Free, fast, privacy-first developer tools. JSON formatter, Base64 encoder, JWT decoder, hash generator, UUID generator, diff checker, and more — all run in your browser." />
+  <meta name="keywords" content="developer tools, JSON formatter, Base64 encoder, JWT decoder, hash generator, UUID generator, regex tester, diff checker, online tools" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <div class="logo">
-    <span class="logo__icon">&lt;/&gt;</span>
-    SimpleDevUtils
-  </div>
-  <h1>Something cool is<br /><span class="gradient-text">coming soon.</span></h1>
-  <p>Developer tools, simplified. We're putting the finishing touches on things.</p>
-  <form class="waitlist-form" id="waitlist-form">
-    <input type="email" id="email-input" placeholder="you@example.com" required />
-    <button type="submit">Get Early Access</button>
-  </form>
-  <p class="form-note" id="form-message">No spam. Just a heads-up when we launch.</p>
-  <script src="main.js"></script>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="#tools">Tools</a>
+          <a href="#privacy">Privacy</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="tools" id="tools">
+    <div class="container">
+      <div class="tools__header">
+        <h1 class="tools__title">SimpleDevUtils</h1>
+        <p class="tools__sub">Privacy-first developer tools — everything runs in your browser.</p>
+      </div>
+
+      <div class="divider" aria-hidden="true">&#x2022;</div>
+
+      <div class="tools__filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="encoding">Encoding</button>
+        <button class="filter-btn" data-filter="crypto">Crypto</button>
+        <button class="filter-btn" data-filter="text">Text</button>
+        <button class="filter-btn" data-filter="time">Time</button>
+      </div>
+
+      <div class="tools__grid">
+
+        <a href="tools/json-formatter.html" class="tool-card" data-cat="encoding">
+          <div class="tool-card__icon">{ }</div>
+          <h3>JSON Formatter</h3>
+          <p>Format, validate, and minify JSON with syntax error line numbers.</p>
+          <span class="tool-card__tag">encoding</span>
+        </a>
+
+        <a href="tools/base64-encode-decode.html" class="tool-card" data-cat="encoding">
+          <div class="tool-card__icon">b64</div>
+          <h3>Base64 Encoder / Decoder</h3>
+          <p>Encode text or decode Base64 strings with full UTF-8 support.</p>
+          <span class="tool-card__tag">encoding</span>
+        </a>
+
+        <a href="tools/jwt-decoder.html" class="tool-card" data-cat="encoding">
+          <div class="tool-card__icon">JWT</div>
+          <h3>JWT Decoder</h3>
+          <p>Inspect JWT header, payload and expiry — no secret required.</p>
+          <span class="tool-card__tag">encoding</span>
+        </a>
+
+        <a href="tools/url-encoder.html" class="tool-card" data-cat="encoding">
+          <div class="tool-card__icon">URL</div>
+          <h3>URL Encoder / Decoder</h3>
+          <p>Percent-encode and decode URLs and query string components.</p>
+          <span class="tool-card__tag">encoding</span>
+        </a>
+
+        <a href="tools/hash-generator.html" class="tool-card" data-cat="crypto">
+          <div class="tool-card__icon">#sha</div>
+          <h3>Hash Generator</h3>
+          <p>Generate SHA-1, SHA-256, SHA-384 and SHA-512 hashes via the Web Crypto API.</p>
+          <span class="tool-card__tag">crypto</span>
+        </a>
+
+        <a href="tools/uuid-generator.html" class="tool-card" data-cat="crypto">
+          <div class="tool-card__icon">uuid</div>
+          <h3>UUID Generator</h3>
+          <p>Generate cryptographically random v4 UUIDs, one or in bulk.</p>
+          <span class="tool-card__tag">crypto</span>
+        </a>
+
+        <a href="tools/timestamp-converter.html" class="tool-card" data-cat="time">
+          <div class="tool-card__icon">time</div>
+          <h3>Timestamp Converter</h3>
+          <p>Convert between Unix timestamps and human-readable date/time in any format.</p>
+          <span class="tool-card__tag">time</span>
+        </a>
+
+        <a href="tools/regex-tester.html" class="tool-card" data-cat="text">
+          <div class="tool-card__icon">.*</div>
+          <h3>Regex Tester</h3>
+          <p>Test regular expressions with live match highlighting and group capture info.</p>
+          <span class="tool-card__tag">text</span>
+        </a>
+
+        <a href="tools/diff-checker.html" class="tool-card" data-cat="text">
+          <div class="tool-card__icon">diff</div>
+          <h3>Diff Checker</h3>
+          <p>Compare two blocks of text line by line, with added and removed lines highlighted.</p>
+          <span class="tool-card__tag">text</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="privacy" id="privacy">
+    <div class="container">
+      <div class="privacy__inner">
+        <div class="privacy__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L4 6v6c0 5.25 3.4 10.15 8 12 4.6-1.85 8-6.75 8-12V6l-8-4z"/></svg></div>
+        <h2>All tools run in your browser.</h2>
+        <p>
+          No data is sent to servers. Your code, tokens, and secrets never leave your machine.
+          SimpleDevUtils has no analytics, no cookies, and no accounts.
+        </p>
+        <div class="privacy__points">
+          <span class="privacy__point">No server-side processing</span>
+          <span class="privacy__point">No analytics or tracking</span>
+          <span class="privacy__point">No cookies or storage</span>
+          <span class="privacy__point">No account required</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils</span>
+        <div class="footer__links">
+          <a href="#tools">Tools</a>
+          <a href="#privacy">Privacy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/theme.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timestamp Converter — Unix to Date — SimpleDevUtils</title>
+  <meta name="description" content="Free online Unix timestamp converter. Convert Unix timestamps to human-readable dates, or any date string to Unix time in seconds and milliseconds." />
+  <meta name="keywords" content="timestamp converter, Unix timestamp, epoch converter, date to Unix, Unix to date, online timestamp tool" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="/#tools">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <a href="/" class="back-btn">&larr; All Tools</a>
+      <header class="tool-header">
+        <h1>Timestamp Converter</h1>
+        <p>Convert between Unix timestamps and human-readable dates. All conversions run in your browser.</p>
+      </header>
+
+      <div class="tool-interface">
+        <div style="margin-bottom: 8px; display: flex; justify-content: flex-end;">
+          <button class="btn btn--secondary btn--sm" id="btn-now">Use Current Time</button>
+        </div>
+
+        <div class="ts-grid">
+          <div class="ts-group">
+            <label for="ts-unix-input">Unix Timestamp (seconds or ms)</label>
+            <input class="tool-input" type="text" id="ts-unix-input" placeholder="e.g. 1700000000" />
+            <button class="btn btn--primary btn--sm" id="btn-unix-convert" style="margin-top: 10px;">Convert to Date</button>
+            <div class="ts-result" id="ts-unix-result"></div>
+          </div>
+
+          <div class="ts-group">
+            <label for="ts-date-input">Date / Time String</label>
+            <input class="tool-input" type="text" id="ts-date-input" placeholder="e.g. 2024-01-15 or Jan 15 2024 12:00:00" />
+            <button class="btn btn--primary btn--sm" id="btn-date-convert" style="margin-top: 10px;">Convert to Unix</button>
+            <div class="ts-result" id="ts-date-result"></div>
+          </div>
+        </div>
+
+        <div class="tool-msg" id="ts-msg"></div>
+      </div>
+    </div>
+  </main>
+
+  <section class="tool-seo">
+    <div class="container">
+      <h2>About Unix Timestamps</h2>
+      <p>
+        A Unix timestamp represents the number of seconds that have elapsed since
+        January 1, 1970, 00:00:00 UTC (the Unix epoch). It is a standard way to represent
+        points in time in programming, databases, and APIs.
+      </p>
+      <p>
+        This tool auto-detects whether your input is in seconds (10 digits) or milliseconds
+        (13 digits). It displays the result in UTC, your local timezone, and ISO 8601 format.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <div class="container">
+      <h2 class="section-title">Related Tools</h2>
+      <div class="related-tools__grid">
+        <a href="uuid-generator.html" class="tool-card">
+          <div class="tool-card__icon">uuid</div>
+          <h3>UUID Generator</h3>
+        </a>
+        <a href="json-formatter.html" class="tool-card">
+          <div class="tool-card__icon">{ }</div>
+          <h3>JSON Formatter</h3>
+        </a>
+        <a href="regex-tester.html" class="tool-card">
+          <div class="tool-card__icon">.*</div>
+          <h3>Regex Tester</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils. Privacy-first developer tools.</span>
+        <div class="footer__links">
+          <a href="/">Home</a>
+          <a href="/#tools">All Tools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/timestamp.js"></script>
+</body>
+</html>

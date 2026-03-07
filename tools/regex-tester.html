@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Regex Tester — Live Match Highlighting — SimpleDevUtils</title>
+  <meta name="description" content="Free online regex tester with live match highlighting. Test JavaScript regular expressions with flags, see match count, and inspect capture groups." />
+  <meta name="keywords" content="regex tester, regular expression tester, online regex, regex match highlight, capture groups" />
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="container">
+      <div class="nav__inner">
+        <a href="/" class="logo">
+          <span class="logo__icon">&lt;/&gt;</span>
+          SimpleDevUtils
+        </a>
+        <div class="nav__links">
+          <a href="/#tools">All Tools</a>
+          <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme"></button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="tool-page">
+    <div class="container">
+      <a href="/" class="back-btn">&larr; All Tools</a>
+      <header class="tool-header">
+        <h1>Regex Tester</h1>
+        <p>Test regular expressions with live match highlighting and capture group details.</p>
+      </header>
+
+      <div class="tool-interface">
+        <div class="tool-row" style="align-items: flex-end;">
+          <div style="flex: 1;">
+            <div class="tool-label" style="margin-bottom: 6px;">Pattern</div>
+            <input class="tool-input" type="text" id="regex-pattern" placeholder="e.g. \d{4}-\d{2}-\d{2}" />
+          </div>
+          <button class="btn btn--ghost btn--sm" id="btn-clear">Clear</button>
+        </div>
+
+        <div class="tool-row" style="margin-top: 0;">
+          <div class="flags-group">
+            <span class="tool-label">Flags:</span>
+            <label class="flag-label">
+              <input type="checkbox" class="regex-flag" value="i" /> i (case-insensitive)
+            </label>
+            <label class="flag-label">
+              <input type="checkbox" class="regex-flag" value="m" /> m (multiline)
+            </label>
+            <label class="flag-label">
+              <input type="checkbox" class="regex-flag" value="s" /> s (dotAll)
+            </label>
+          </div>
+        </div>
+
+        <div style="margin-top: 8px;">
+          <div class="tool-label" style="margin-bottom: 6px;">Test String</div>
+          <textarea class="tool-textarea" id="regex-test" placeholder="Enter the text to test against..." style="min-height: 140px;"></textarea>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+          <span class="tool-label">Matches</span>
+          <span id="regex-count" style="font-size: 0.85rem; color: var(--accent); font-weight: 600;"></span>
+        </div>
+        <div class="regex-output" id="regex-output"></div>
+
+        <div class="tool-msg" id="regex-msg"></div>
+
+        <div id="regex-groups" style="margin-top: 12px; font-family: var(--mono); font-size: 0.8rem; color: var(--text-dim); white-space: pre-wrap;"></div>
+      </div>
+    </div>
+  </main>
+
+  <section class="tool-seo">
+    <div class="container">
+      <h2>About the Regex Tester</h2>
+      <p>
+        Regular expressions (regex) are patterns used to match character combinations in strings.
+        This tool uses JavaScript's native <code>RegExp</code> to test your pattern in real time,
+        highlighting all matches as you type.
+      </p>
+      <p>
+        Supported flags: <code>i</code> (ignore case), <code>m</code> (multiline anchors),
+        <code>s</code> (dot matches newlines). The <code>g</code> flag is always applied
+        to find all matches.
+      </p>
+    </div>
+  </section>
+
+  <section class="related-tools">
+    <div class="container">
+      <h2 class="section-title">Related Tools</h2>
+      <div class="related-tools__grid">
+        <a href="diff-checker.html" class="tool-card">
+          <div class="tool-card__icon">diff</div>
+          <h3>Diff Checker</h3>
+        </a>
+        <a href="json-formatter.html" class="tool-card">
+          <div class="tool-card__icon">{ }</div>
+          <h3>JSON Formatter</h3>
+        </a>
+        <a href="url-encoder.html" class="tool-card">
+          <div class="tool-card__icon">URL</div>
+          <h3>URL Encoder / Decoder</h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__copy">&copy; 2026 SimpleDevUtils. Privacy-first developer tools.</span>
+        <div class="footer__links">
+          <a href="/">Home</a>
+          <a href="/#tools">All Tools</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/theme.js"></script>
+  <script src="../js/utils.js"></script>
+  <script src="../js/regex.js"></script>
+</body>
+</html>
