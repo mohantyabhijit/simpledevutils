@@ -12,12 +12,41 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
-      - name: Deploy to droplet
+      - name: Check if nginx.conf changed
+        id: nginx-check
+        run: |
+          if git diff --name-only HEAD~1 HEAD | grep -q '^nginx.conf$'; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy site files
         uses: appleboy/scp-action@v0.1.7
         with:
           host: ${{ secrets.DROPLET_HOST }}
           username: root
           key: ${{ secrets.DROPLET_SSH_KEY }}
-          source: "index.html,404.html,405.html,css/,js/,tools/"
+          source: "index.html,404.html,405.html,css/,js/,tools/,nginx.conf"
           target: /var/www/simpledevutils
+
+      - name: Deploy nginx config
+        if: steps.nginx-check.outputs.changed == 'true'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DROPLET_HOST }}
+          username: root
+          key: ${{ secrets.DROPLET_SSH_KEY }}
+          script: |
+            cp /etc/nginx/sites-available/simpledevutils /etc/nginx/sites-available/simpledevutils.bak
+            cp /var/www/simpledevutils/nginx.conf /etc/nginx/sites-available/simpledevutils
+            if nginx -t 2>&1; then
+              systemctl reload nginx
+            else
+              echo "nginx config test failed — rolling back"
+              cp /etc/nginx/sites-available/simpledevutils.bak /etc/nginx/sites-available/simpledevutils
+              exit 1
+            fi
