@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JSON Formatter &amp; Validator — SimpleDevUtils</title>
-  <meta name="description" content="Free online JSON formatter, validator, and minifier. Paste your JSON to format it with proper indentation or minify it for production. Syntax errors shown with line numbers." />
-  <meta name="keywords" content="JSON formatter, JSON validator, JSON minifier, JSON beautifier, online JSON tool" />
+  <meta name="description" content="Free online JSON formatter, validator, and minifier. Beautify with custom indentation, explore with tree view, auto-fix errors, upload files. Runs entirely in your browser." />
+  <meta name="keywords" content="JSON formatter, JSON validator, JSON minifier, JSON beautifier, JSON tree view, online JSON tool" />
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body>
@@ -30,27 +30,66 @@
       <a href="/" class="back-btn">&larr; All Tools</a>
       <header class="tool-header">
         <h1>JSON Formatter &amp; Validator</h1>
-        <p>Format, validate, and minify JSON — runs entirely in your browser.</p>
+        <p>Format, validate, minify, and explore JSON — runs entirely in your browser.</p>
       </header>
 
       <div class="tool-interface">
+        <!-- Toolbar -->
+        <div class="json-toolbar">
+          <div class="json-toolbar__left">
+            <label class="json-toolbar__label">
+              Indent:
+              <select class="tool-select tool-select--sm" id="indent-select">
+                <option value="2" selected>2 spaces</option>
+                <option value="3">3 spaces</option>
+                <option value="4">4 spaces</option>
+                <option value="tab">Tab</option>
+              </select>
+            </label>
+            <label class="json-toolbar__upload-btn btn btn--ghost btn--sm" tabindex="0">
+              Upload JSON
+              <input type="file" id="file-upload" accept=".json,.txt" hidden />
+            </label>
+            <button class="btn btn--ghost btn--sm" id="btn-sample">Load Sample</button>
+          </div>
+          <div class="json-toolbar__right">
+            <label class="json-toolbar__toggle">
+              <input type="checkbox" id="auto-format-toggle" />
+              Auto-format
+            </label>
+          </div>
+        </div>
+
         <div class="tool-columns">
+          <!-- Input Column -->
           <div>
             <div class="tool-col__header">
               <span class="tool-label">Input JSON</span>
             </div>
-            <textarea class="tool-textarea" id="json-input" placeholder='{"hello": "world"}'></textarea>
+            <textarea class="tool-textarea" id="json-input" placeholder='Paste JSON here, upload a file, or load sample data...'></textarea>
             <div class="tool-actions">
-              <button class="btn btn--primary btn--sm" id="btn-format">Format</button>
-              <button class="btn btn--secondary btn--sm" id="btn-minify">Minify</button>
+              <button class="btn btn--primary btn--sm" id="btn-format">Beautify</button>
+              <button class="btn btn--secondary btn--sm" id="btn-minify">Uglify</button>
+              <button class="btn btn--secondary btn--sm" id="btn-fix">Fix JSON</button>
               <button class="btn btn--ghost btn--sm" id="btn-clear">Clear</button>
             </div>
           </div>
+
+          <!-- Output Column -->
           <div>
             <div class="tool-col__header">
               <span class="tool-label">Output</span>
+              <div class="json-view-tabs">
+                <button class="json-view-tab active" data-view="raw">Raw</button>
+                <button class="json-view-tab" data-view="tree">Tree View</button>
+              </div>
             </div>
-            <textarea class="tool-textarea" id="json-output" readonly placeholder="Formatted JSON will appear here..."></textarea>
+            <div id="output-raw">
+              <textarea class="tool-textarea" id="json-output" readonly placeholder="Formatted JSON will appear here..."></textarea>
+            </div>
+            <div id="output-tree" class="json-tree-container" style="display:none">
+              <div class="json-tree" id="json-tree"></div>
+            </div>
             <div class="tool-actions">
               <button class="btn btn--secondary btn--sm" id="btn-copy">Copy</button>
               <button class="btn btn--ghost btn--sm" id="btn-download">Download</button>
@@ -58,6 +97,9 @@
           </div>
         </div>
         <div class="tool-msg" id="json-msg"></div>
+
+        <!-- Stats bar -->
+        <div class="json-stats" id="json-stats"></div>
       </div>
     </div>
   </main>
@@ -66,13 +108,19 @@
     <div class="container">
       <h2>About the JSON Formatter</h2>
       <p>
-        This tool parses your JSON input and re-serializes it with consistent 2-space indentation,
-        making it easy to read and debug. If your JSON is invalid, the formatter shows you the
-        exact line number of the error so you can fix it quickly.
+        This tool parses your JSON input and re-serializes it with your preferred indentation
+        (2, 3, or 4 spaces, or tabs), making it easy to read and debug. If your JSON is invalid,
+        the formatter shows the exact line number of the error so you can fix it quickly.
       </p>
       <p>
-        Use <strong>Minify</strong> to strip all unnecessary whitespace for production payloads or
-        API responses. Everything runs client-side — your data never leaves your browser.
+        Use <strong>Beautify</strong> to format with indentation, or <strong>Uglify</strong> to strip all
+        whitespace for production payloads. The <strong>Fix JSON</strong> button attempts to repair common
+        issues like trailing commas and missing quotes. Switch to <strong>Tree View</strong> to explore your
+        JSON structure interactively.
+      </p>
+      <p>
+        Everything runs client-side — your data never leaves your browser. Your last input is saved
+        to local storage so you can pick up where you left off.
       </p>
     </div>
   </section>
